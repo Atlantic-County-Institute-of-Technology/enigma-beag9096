@@ -12,12 +12,36 @@ alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 # user inputs a message and selects a key (or random), the message is then translated using the cipher
 def encode_message():
-    input("Enter a message to encode:  ")
-    input("Enter the cipher key:  ")
+    msg = input("Enter a message to encode:  ")
+    cp1 = int(input("Enter the cipher key:  "))
+    o1 = " "
+    for char in msg.lower():
+        if char == " ":
+            o1 += char
+        else:
+            index1 = alphabet.find(char)
+            new_index1 = (index1 + cp1) % len(alphabet)
+            o1 += alphabet[new_index1]
+    print('Encoded Message:', o1)
     pass
 
 # encodes a target file, similarly to encode_message, except now targeting a filename
 def encode_file():
+    file1 = input(f"Enter a file name to encode \n(choose 1.txt, 2.txt, or 3.txt) :\n                                  ")
+    cp2 = int(input("Enter the cipher key:  "))
+    o2 = " "
+    if file1 == "1.txt":
+        f = open(file1, "r")
+        print(f"File content: {f.read()}")
+        f.close()
+        for char in file1:
+            if char == " ":
+                o2 += char
+            else:
+                index2 = alphabet.find(char)
+                new_index2 = (index2 + cp2) % len(alphabet)
+                o2 += alphabet[new_index2]
+    print('Encoded Message:', o2)
     pass
 
 # decodes target file using a user-specified key. If key is unknown, a keypress should
