@@ -27,6 +27,7 @@ def encode_message():
 
 # encodes a target file, similarly to encode_message, except now targeting a filename
 def encode_file():
+    # my goal here is to figure out how to pull the text from the file and change that into a variable
     file1 = input(f"Enter a file name to encode \n(choose 1.txt, 2.txt, or 3.txt) :\n                                  ")
     cp2 = int(input("Enter the cipher key:  "))
     o2 = " "
