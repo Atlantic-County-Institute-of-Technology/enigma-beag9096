@@ -44,6 +44,7 @@ def encode_file():
     print('Encoded Message:', o2)
     pass
 
+
 # decodes target file using a user-specified key. If key is unknown, a keypress should
 # call decode_unknown_key()
 def decode_file():
