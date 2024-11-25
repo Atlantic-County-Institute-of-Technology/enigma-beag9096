@@ -138,7 +138,7 @@ def decode_unknown_key():
             else:
                 index4 = alphabet.find(char)
                 while i <= 52:
-                    new_index4 = (index4 - i) % len(alphabet)
+                    new_index4 = (index4 - i[]) % len(alphabet)
                 o4 += alphabet[new_index4]
     print('Decoded Message:', o4)
     pass
