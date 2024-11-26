@@ -3,7 +3,7 @@
 # custom encoded messages, as well as encode and decode from file.
 # author: Jaidyn Beagan
 # created: 11.18.2024
-# last update:  11.18.2024
+# last update:  11.26.2024
 
 import random
 
@@ -126,23 +126,66 @@ def decode_unknown_key():
     # i = 26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52
     choice2 = input(
         f"Enter a file name to decode \n(choose 4.txt, 5.txt, or 6.txt) :\n                                  ")
-    o4 = " "
     if choice2 == "4.txt":
         with open(choice2) as f:
             trying2 = f.read()
             print(f"File content: {trying2}")
             f.close()
-        for char in trying2.lower():
-            if char == " ":
-                o4 += char
-            else:
-                index4 = alphabet.find(char)
-                while i <= 52:
-                    new_index4 = (index4 - i[]) % len(alphabet)
-                o4 += alphabet[new_index4]
-    print('Decoded Message:', o4)
+        for key in range(0, 26, 1):
+            o4 = " "
+            for char in trying2.lower():
+                if char in alphabet:
+                    index4 = alphabet.find(char)
+                    new_index4 = (index4 + key) % len(alphabet)
+                    o4 += alphabet[new_index4]
+                else:
+                    o4 += char
+            print('Decoded Message:', o4)
+    if choice2 == "5.txt":
+        with open(choice2) as f:
+            trying2 = f.read()
+            print(f"File content: {trying2}")
+            f.close()
+        for key in range(0, 26, 1):
+            o4 = " "
+            for char in trying2.lower():
+                if char in alphabet:
+                    index4 = alphabet.find(char)
+                    new_index4 = (index4 + key) % len(alphabet)
+                    o4 += alphabet[new_index4]
+                else:
+                    o4 += char
+            print('Decoded Message:', o4)
+    if choice2 == "6.txt":
+        with open(choice2) as f:
+            trying2 = f.read()
+            print(f"File content: {trying2}")
+            f.close()
+        for key in range(0, 26, 1):
+            o4 = " "
+            for char in trying2.lower():
+                if char in alphabet:
+                    index4 = alphabet.find(char)
+                    new_index4 = (index4 + key) % len(alphabet)
+                    o4 += alphabet[new_index4]
+                else:
+                    o4 += char
+            print('Decoded Message:', o4)
     pass
-
+# runs if the key is unknown. If this is true, print out all possible decoding combinations.
+def decode_msg():
+    msg1 = input("Enter a message to encode:  ")
+    for key1 in range(0, 26, 1):
+        o5 = " "
+        for char in msg1.lower():
+            if char in alphabet:
+                index5 = alphabet.find(char)
+                new_index5 = (index5 + key1) % len(alphabet)
+                o5 += alphabet[new_index5]
+            else:
+                o5 += char
+        print('Decoded Message:', o5)
+    pass
 
 # main method declaration
 def main():
@@ -150,22 +193,25 @@ def main():
         print(f"Welcome to the Enigma Machine!\n"
               f"Please select an option:\n"
               f"[1]: Encode a custom message.\n"
-              f"[2]: Encode file.\n"
-              f"[3]: Decode file.\n"
-              f"[4]: Decode file with an unknown key.\n"
-              f"[5]: Exit.")
+              f"[2]: Decode a custom message with an unknown key.\n"
+              f"[3]: Encode file.\n"
+              f"[4]: Decode file.\n"
+              f"[5]: Decode file with an unknown key.\n"
+              f"[6]: Exit.")
 
         selection = input("Choose an option:")
 
         if selection == "1":
             encode_message()
         elif selection == "2":
-            encode_file()
+            decode_msg()
         elif selection == "3":
-            decode_file()
+            encode_file()
         elif selection == "4":
-            decode_unknown_key()
+            decode_file()
         elif selection == "5":
+            decode_unknown_key()
+        elif selection == "6":
             print("Goodbye.")
             exit()
         else:
